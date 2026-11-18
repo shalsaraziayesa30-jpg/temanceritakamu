@@ -63,14 +63,14 @@
     if (riwayat.length > 10) riwayat = riwayat.slice(-10);
     status.style.display = "block";
     try {
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent`), {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${API_KEY}, "x-goog-api-key": API_KEY },`
-        body: JSON.stringify({
-          systemInstruction: { parts: [{ text: "Kamu adalah CurhatYuk, temen curhat yang asik, bahasa gaul Indonesia anak kuliah semester 1, pake 'gue' 'lu', empatik, santai, tidak kaku, jawab singkat max 3 paragraf, pake emoji dikit. Kamu temennya Shalsa Razi, anak Sistem Informasi. Kalo user curhat, dengerin dulu, validasi perasaannya, baru kasih solusi yang masuk akal. Jangan jawab kayak robot." }] },
-          contents: riwayat
-        })
-      });
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent`, {
+method: "POST",
+headers: { "Content-Type": "application/json", "Authorization": `Bearer ${API_KEY}`, "x-goog-api-key": API_KEY },
+body: JSON.stringify({
+systemInstruction: { parts: [{ text: "Kamu adalah CurhatYuk, temen curhat yang asik, bahasa gaul Indonesia anak kuliah semester" }] },
+contents: riwayat
+})
+});
       const data = await res.json();
       let jawaban = data.candidates?.[0]?.content?.parts?.[0]?.text || "Waduh, gue lagi error nih, coba kirim lagi dong.";
       riwayat.push({ role: "model", parts: [{ text: jawaban }] });
