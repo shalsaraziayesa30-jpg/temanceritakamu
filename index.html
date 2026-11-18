@@ -43,7 +43,7 @@
 </div>
 <script>
   
-  const API_KEY = "AQ.Ab8RN6ImYWt1T_TiaKGXPCKTy3faQV4Aj31pMxjOCcQh2xOMYg";
+  const API_KEY = "AQ.Ab8RN6J_rISMox9bUoUIAmxspkYdei1_V0mzlfq6S7jJAJFIuw";
   
   const chat = document.getElementById('chat');
   const input = document.getElementById('teks');
@@ -63,7 +63,7 @@
     if (riwayat.length > 10) riwayat = riwayat.slice(-10);
     status.style.display = "block";
     try {
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${API_KEY}`, {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
