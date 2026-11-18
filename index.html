@@ -43,7 +43,7 @@
 </div>
 <script>
   
-  const API_KEY = "AQ.Ab8RN6J_rISMox9bUoUIAmxspkYdei1_V0mzlfq6S7jJAJFIuw";
+  const API_KEY = "Ab8RN6I7xp-PMsC4R95r-203fEPEP2Rl7KRU2PVr--l5PF-KJQ";
   
   const chat = document.getElementById('chat');
   const input = document.getElementById('teks');
@@ -63,9 +63,9 @@
     if (riwayat.length > 10) riwayat = riwayat.slice(-10);
     status.style.display = "block";
     try {
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`, {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent`), {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${API_KEY}, "x-goog-api-key": API_KEY },`
         body: JSON.stringify({
           systemInstruction: { parts: [{ text: "Kamu adalah CurhatYuk, temen curhat yang asik, bahasa gaul Indonesia anak kuliah semester 1, pake 'gue' 'lu', empatik, santai, tidak kaku, jawab singkat max 3 paragraf, pake emoji dikit. Kamu temennya Shalsa Razi, anak Sistem Informasi. Kalo user curhat, dengerin dulu, validasi perasaannya, baru kasih solusi yang masuk akal. Jangan jawab kayak robot." }] },
           contents: riwayat
